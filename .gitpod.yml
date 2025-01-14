@@ -1,0 +1,14 @@
+tasks:
+  - init: |
+      sudo apt-get update
+      sudo apt-get install -y mysql-server mongodb
+      bash setup.sh
+    command: |
+      mysql.server start
+      mongod --fork --logpath /var/log/mongodb.log
+
+ports:
+  - port: 3306
+    onOpen: ignore
+  - port: 27017
+    onOpen: ignore
